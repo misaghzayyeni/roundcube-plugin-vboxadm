@@ -570,7 +570,7 @@ class vboxadm extends rcube_plugin
 		$out = html::div(
 			array(
 				'class' => 'settingsbox',
-				'style' => 'margin:0 0 15px 0;'
+				'style' => 'margin:0 0 15px 0; height: 100%; overflow: auto;'
 			),
 			html::div(
 				array(

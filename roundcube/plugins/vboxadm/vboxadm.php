@@ -623,7 +623,8 @@ class vboxadm extends rcube_plugin
 		$curpwd = get_input_value('_curpasswd', RCUBE_INPUT_POST);
 		$newpwd = get_input_value('_newpasswd', RCUBE_INPUT_POST);
 		$newpwd2 = get_input_value('_confpasswd', RCUBE_INPUT_POST);
-		
+		if($newpwd == '' && $newpwd2 == '')
+                        $curpwd = ' ';
 		$settings['SAActive'] 		= $sa_active;
 		$settings['SAKillScore'] 	= $sa_kill_score;
 		$settings['IsOnVacation'] 	= $is_on_vacation;

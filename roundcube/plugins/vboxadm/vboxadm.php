@@ -472,6 +472,24 @@ class vboxadm extends rcube_plugin
 		$out .= '<p>' . $this->gettext('passwordcurrentexplanation') . '</p>';
 		$out .= '<table class="vboxadm-settings" cellpadding="0" cellspacing="0">';
 
+		$field_id = 'curpasswd';
+                $input_passwordcurrent = new html_passwordfield(
+                        array(
+                                'name' => '_curpasswd',
+                                'id' => $field_id,
+                                'class' => 'text-long',
+                                'autocomplete' => 'off'
+                                )
+                );
+
+                $out .= sprintf("<tr><th><label for=\"%s\">%s</label>:</th><td>%s%s</td></tr>\n",
+                        $field_id,
+                        rep_specialchars_output($this->gettext('passwordcurrent')),
+                        $input_passwordcurrent->show(),
+                        ''
+                );
+
+
 		$field_id = 'newpasswd';
 		$input_passwordnew = new html_passwordfield(
 			array(
@@ -511,34 +529,7 @@ class vboxadm extends rcube_plugin
 		
 		// ============================================================
 		$out .= '</td></tr></table>';
-		// =====================================================================================================
-		// Password
-		$out .= '<fieldset><legend>' . $this->gettext('password') . '</legend>' . "\n";
-		$out .= '<div class="fieldset-content">';
-		$out .= '<p>' . $this->gettext('passwordexplanation') . '</p>';
-		$out .= '<table class="vboxadm-settings" cellpadding="0" cellspacing="0">';
 
-		$field_id = 'curpasswd';
-		$input_passwordcurrent = new html_passwordfield(
-			array(
-				'name' => '_curpasswd',
-				'id' => $field_id,
-				'class' => 'text-long',
-				'autocomplete' => 'off'
-				)
-		);
-
-		$out .= sprintf("<tr><th><label for=\"%s\">%s</label>:</th><td>%s%s</td></tr>\n",
-			$field_id,
-			rep_specialchars_output($this->gettext('passwordcurrent')),
-			$input_passwordcurrent->show(),
-			''
-		);
-
-		$out .= '</table>';
-		$out .= '</div></fieldset>'."\n\n";
-		
-		// ============================================================
 
 		$out .= html::p(
 			null,
